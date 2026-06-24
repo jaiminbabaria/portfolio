@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-11T00:00:00Z",
+  "updated": "2026-06-24T23:01:05Z",
   "username": "jaiminbabaria",
   "films": [
     {
@@ -23,7 +23,7 @@
       "year": "2025",
       "rating": null,
       "date": "May 27, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/obsession-2025-2/",
+      "url": "https://letterboxd.com/jaiminbabaria/film/obsession-2025/",
       "rewatch": false
     },
     {
@@ -49,6 +49,54 @@
       "date": "Apr 18, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/bareilly-ki-barfi/",
       "rewatch": false
+    },
+    {
+      "title": "Tu Yaa Main",
+      "year": "2026",
+      "rating": null,
+      "date": "Apr 15, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/tu-yaa-main/",
+      "rewatch": false
+    },
+    {
+      "title": "Thrash",
+      "year": "2026",
+      "rating": null,
+      "date": "Apr 11, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/thrash-2026/1/",
+      "rewatch": false
+    },
+    {
+      "title": "Wild Things",
+      "year": "1998",
+      "rating": null,
+      "date": "Apr 9, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/wild-things/",
+      "rewatch": false
+    },
+    {
+      "title": "No Smoking",
+      "year": "2007",
+      "rating": 5.0,
+      "date": "Apr 3, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/no-smoking-2007/",
+      "rewatch": true
+    },
+    {
+      "title": "12 Angry Men",
+      "year": "1957",
+      "rating": 5.0,
+      "date": "Mar 30, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/12-angry-men/",
+      "rewatch": true
+    },
+    {
+      "title": "Sicario",
+      "year": "2015",
+      "rating": 5.0,
+      "date": "Mar 27, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/sicario-2015/",
+      "rewatch": true
     }
   ]
 }
