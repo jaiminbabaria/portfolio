@@ -1,0 +1,41 @@
+name: Update Letterboxd feed
+
+on:
+  schedule:
+    # Runs daily at 06:00 UTC. Adjust if you like (cron is in UTC).
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}   # adds a "Run workflow" button for manual runs
+
+permissions:
+  contents: write          # lets the action commit films.json back to the repo
+
+concurrency:
+  group: letterboxd
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch latest Letterboxd diary
+        run: python scripts/fetch_letterboxd.py
+
+      - name: Commit changes (only if films.json changed)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add films.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: refresh Letterboxd feed"
+            git push
+          fi

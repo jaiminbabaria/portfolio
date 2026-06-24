@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaimin Babaria — Software &amp; Data Engineer</title>
+<meta name="description" content="Jaimin Babaria — MS Computer Science at University of Illinois Chicago. Software engineering, data engineering, and applied ML.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+
+<style>
+/* ───────────────────────────────────────────────
+   DESIGN TOKENS
+   ─────────────────────────────────────────────── */
+:root {
+  --paper: #f4efe1;
+  --paper-deep: #ece5d2;
+  --ink: #1a1815;
+  --ink-soft: #3d3a33;
+  --ink-faint: #6b665b;
+  --rule: #c9c0a7;
+  --vermilion: #c1391d;
+  --vermilion-deep: #962a14;
+  --ochre: #a17a44;
+  --sage: #5a6b4f;
+  --highlight: #f0c674;
+
+  --serif: 'Fraunces', 'Georgia', serif;
+  --body: 'Newsreader', Georgia, serif;
+  --mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --col-gap: clamp(1.5rem, 3vw, 3rem);
+  --page-pad: clamp(1.25rem, 5vw, 4rem);
+  --max-w: 1440px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+::selection { background: var(--vermilion); color: var(--paper); }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 18px;
+  line-height: 1.55;
+  font-feature-settings: "kern", "liga", "onum";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Paper grain texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ───────────────────────────────────────────────
+   TYPOGRAPHY UTILITIES
+   ─────────────────────────────────────────────── */
+.serif { font-family: var(--serif); }
+.mono { font-family: var(--mono); }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vermilion);
+  font-weight: 500;
+}
+
+.meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+.italic-serif {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "SOFT" 100, "opsz" 144;
+}
+
+/* ───────────────────────────────────────────────
+   MASTHEAD / TOP RIBBON
+   ─────────────────────────────────────────────── */
+.masthead {
+  position: relative;
+  z-index: 2;
+  padding: 1.25rem var(--page-pad);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.masthead .left { text-align: left; }
+.masthead .right { text-align: right; }
+
+@media (max-width: 720px) {
+  .masthead { font-size: 0.62rem; }
+}
+
+/* ───────────────────────────────────────────────
+   HERO / FRONT PAGE
+   ─────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  z-index: 2;
+  padding: clamp(2rem, 6vw, 5rem) var(--page-pad) clamp(3rem, 7vw, 6rem);
+  border-bottom: 3px double var(--rule);
+}
+
+.hero-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.volume-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.title-block {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+h1.name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-variation-settings: "SOFT" 50, "opsz" 144;
+  font-size: clamp(3.5rem, 13vw, 11rem);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+h1.name .first {
+  display: block;
+  font-style: italic;
+  font-variation-settings: "SOFT" 100, "opsz" 144;
+  color: var(--ink);
+}
+
+h1.name .last {
+  display: block;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  font-variation-settings: "SOFT" 30, "opsz" 144;
+}
+
+.tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "SOFT" 100, "opsz" 72;
+  font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+  line-height: 1.3;
+  max-width: 720px;
+  color: var(--ink-soft);
+  margin-top: clamp(1rem, 3vw, 2rem);
+}
+
+.tagline em {
+  color: var(--vermilion);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.hero-footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin-top: clamp(2rem, 5vw, 4rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.hero-footer .field .label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.hero-footer .field .value {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--ink);
+  font-variation-settings: "opsz" 24;
+}
+
+.hero-footer .field a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ochre);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.hero-footer .field a:hover {
+  color: var(--vermilion);
+  border-color: var(--vermilion);
+}
+
+/* Big ornament */
+.ornament {
+  position: absolute;
+  right: var(--page-pad);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(60px, 9vw, 130px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+@media (max-width: 900px) { .ornament { display: none; } }
+
+/* ───────────────────────────────────────────────
+   SECTION SCAFFOLDING
+   ─────────────────────────────────────────────── */
+section {
+  position: relative;
+  z-index: 2;
+  padding: clamp(3rem, 7vw, 6rem) var(--page-pad);
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.section-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-header .num {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--vermilion);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.section-header h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "opsz" 144;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.section-header h2 em {
+  font-style: italic;
+  color: var(--vermilion);
+  font-variation-settings: "SOFT" 100, "opsz" 144;
+}
+
+.section-header .right-meta {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 640px) {
+  .section-header { grid-template-columns: auto 1fr; }
+  .section-header .right-meta { display: none; }
+}
+
+/* ───────────────────────────────────────────────
+   ABOUT / STATEMENT
+   ─────────────────────────────────────────────── */
+.statement {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: var(--col-gap);
+}
+
+.statement .side {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--ink-faint);
+}
+
+.statement .side .key {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--vermilion);
+  font-size: 0.65rem;
+  display: block;
+  margin-top: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+.statement .side .key:first-child { margin-top: 0; }
+
+.statement .body p {
+  font-family: var(--serif);
+  font-weight: 350;
+  font-variation-settings: "opsz" 24, "SOFT" 30;
+  font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+  max-width: 60ch;
+}
+
+.statement .body p:first-letter {
+  font-family: var(--serif);
+  font-size: 3.8em;
+  float: left;
+  line-height: 0.85;
+  font-weight: 500;
+  font-variation-settings: "SOFT" 100, "opsz" 144;
+  padding: 0.05em 0.08em 0 0;
+  color: var(--vermilion);
+}
+
+.statement .body em {
+  font-style: italic;
+  color: var(--vermilion-deep);
+}
+
+@media (max-width: 800px) {
+  .statement { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+/* ───────────────────────────────────────────────
+   FEATURED PROJECT — FAIRFINANCE
+   ─────────────────────────────────────────────── */
+.featured {
+  background: var(--paper);
+}
+
+.featured-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.4rem 0.85rem;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.featured-badge::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: var(--vermilion);
+  border-radius: 50%;
+}
+
+.featured-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "opsz" 144;
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  max-width: 18ch;
+}
+
+.featured-title em {
+  font-style: italic;
+  color: var(--vermilion);
+  font-variation-settings: "SOFT" 100, "opsz" 144;
+}
+
+.featured-sub {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-faint);
+  margin-bottom: 2.5rem;
+}
+.featured-sub span { color: var(--ochre); }
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.featured-prose p {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24;
+  font-size: 1.08rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-bottom: 1rem;
+}
+
+.featured-prose .lede {
+  font-size: 1.25rem;
+  color: var(--ink);
+  font-variation-settings: "opsz" 36, "SOFT" 30;
+  margin-bottom: 1.5rem;
+}
+
+.findings-list {
+  list-style: none;
+  margin-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.findings-list li {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.findings-list .marker {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--vermilion);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  padding-top: 0.2rem;
+}
+
+.findings-list .text {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.findings-list .text strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+.findings-list .text em {
+  color: var(--vermilion-deep);
+  font-style: italic;
+}
+
+/* Data viz panel */
+.data-panel {
+  position: sticky;
+  top: 2rem;
+  border: 1px solid var(--ink);
+  padding: 1.75rem 1.5rem;
+  background: var(--paper);
+}
+
+.data-panel .panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 1.25rem;
+}
+.data-panel .panel-head .title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  font-variation-settings: "SOFT" 100, "opsz" 36;
+}
+.data-panel .panel-head .n {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+.kappa-callout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 1.25rem;
+}
+.kappa-callout .big {
+  font-family: var(--serif);
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--vermilion);
+  font-variation-settings: "opsz" 144;
+}
+.kappa-callout .desc {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.kappa-callout .desc strong { color: var(--ink); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.25rem; font-size: 0.65rem; }
+
+.bias-chart {
+  margin-bottom: 1.25rem;
+}
+.bias-chart .chart-label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 65px 1fr 50px;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+.bar-row .model { color: var(--ink); font-weight: 500; }
+.bar-row .track {
+  height: 8px;
+  background: var(--paper-deep);
+  position: relative;
+  border: 1px solid var(--rule);
+}
+.bar-row .fill {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  background: var(--vermilion);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.bar-row.in-view .fill { transform: scaleX(1); }
+.bar-row .val { text-align: right; color: var(--vermilion-deep); font-weight: 500; }
+
+.dir-rule {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 1.25rem;
+}
+.dir-rule .head {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.5rem;
+}
+.dir-rule .verdict {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  font-variation-settings: "SOFT" 100, "opsz" 36;
+  color: var(--vermilion);
+}
+.dir-rule .detail {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  margin-top: 0.35rem;
+}
+
+.method-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+.method-compare .cell {
+  padding: 0.75rem;
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+}
+.method-compare .label {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.4rem;
+}
+.method-compare .pval {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-variation-settings: "opsz" 72;
+  color: var(--ink);
+}
+.method-compare .cell.win { background: var(--ink); }
+.method-compare .cell.win .label { color: var(--paper-deep); }
+.method-compare .cell.win .pval { color: var(--paper); }
+.method-compare .cell.win .pval .tag { color: var(--highlight); font-style: italic; font-family: var(--serif); font-size: 0.85rem; display: block; }
+
+.tech-stack {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  margin-top: 0.5rem;
+}
+.tech-stack .label {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.5rem;
+}
+.tech-stack .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.tech-stack .tag {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+}
+
+@media (max-width: 900px) {
+  .featured-grid { grid-template-columns: 1fr; }
+  .data-panel { position: static; }
+}
+
+/* ───────────────────────────────────────────────
+   OTHER PROJECTS
+   ─────────────────────────────────────────────── */
+.project-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.project-entry {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr 80px;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+  position: relative;
+  transition: padding 0.4s ease;
+}
+
+.project-entry:hover { padding-inline: 1rem; }
+.project-entry:hover .project-title { color: var(--vermilion); }
+
+.project-entry .num {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--vermilion);
+  letter-spacing: 0.1em;
+  padding-top: 0.4rem;
+}
+
+.project-entry .main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-variation-settings: "SOFT" 30, "opsz" 72;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  transition: color 0.3s;
+}
+
+.project-title em {
+  font-style: italic;
+  color: var(--ochre);
+  font-variation-settings: "SOFT" 100;
+}
+
+.project-meta {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+.project-desc {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 18;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.project-desc .pill {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.4rem;
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  margin-top: 0.5rem;
+  margin-right: 0.25rem;
+}
+
+.project-arrow {
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--ink-faint);
+  transition: transform 0.3s, color 0.3s;
+  padding-top: 0.2rem;
+  text-align: right;
+  text-decoration: none;
+  display: block;
+  line-height: 1;
+}
+.project-arrow:hover { transform: translateX(8px); color: var(--vermilion); }
+
+@media (max-width: 800px) {
+  .project-entry {
+    grid-template-columns: 50px 1fr;
+    gap: 1rem;
+  }
+  .project-entry > :nth-child(3),
+  .project-entry > :nth-child(4) { grid-column: 2; }
+}
+
+/* ───────────────────────────────────────────────
+   EXPERIENCE TIMELINE
+   ─────────────────────────────────────────────── */
+.exp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.exp-entry {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3rem;
+  padding: 2.25rem 0;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+
+.exp-entry:last-child { border-bottom: none; }
+
+.exp-when {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  position: relative;
+}
+.exp-when .now {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "SOFT" 100;
+  color: var(--vermilion);
+  font-size: 0.85rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.exp-when::after {
+  content: '';
+  position: absolute;
+  top: 0.6rem;
+  right: 0;
+  width: 30px;
+  height: 1px;
+  background: var(--ink);
+}
+
+.exp-role {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-variation-settings: "SOFT" 30, "opsz" 72;
+  font-size: clamp(1.35rem, 2.3vw, 1.75rem);
+  line-height: 1.15;
+  margin-bottom: 0.35rem;
+}
+.exp-role em {
+  font-style: italic;
+  color: var(--vermilion);
+  font-variation-settings: "SOFT" 100;
+}
+
+.exp-org {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.exp-org .sep { color: var(--rule); }
+
+.exp-bullets {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+.exp-bullets li {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 18;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.exp-bullets li::before {
+  content: '§';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--vermilion);
+  font-family: var(--serif);
+  font-style: italic;
+}
+.exp-bullets li strong { color: var(--ink); font-weight: 500; }
+.exp-bullets li em { color: var(--vermilion-deep); font-style: italic; }
+
+@media (max-width: 800px) {
+  .exp-entry { grid-template-columns: 1fr; gap: 0.75rem; }
+  .exp-when::after { display: none; }
+}
+
+/* ───────────────────────────────────────────────
+   SKILLS / INDEX
+   ─────────────────────────────────────────────── */
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.skill-col {
+  padding: 2rem 1.5rem;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.skill-col:last-child { border-right: none; }
+
+.skill-col .cat {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--vermilion);
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 1rem;
+}
+
+.skill-col ul {
+  list-style: none;
+  columns: 1;
+}
+.skill-col li {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 18;
+  font-size: 0.98rem;
+  padding: 0.3rem 0;
+  color: var(--ink);
+}
+.skill-col li::before {
+  content: '— ';
+  color: var(--ochre);
+}
+
+/* ───────────────────────────────────────────────
+   EDUCATION
+   ─────────────────────────────────────────────── */
+.edu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--rule);
+}
+.edu-card {
+  padding: 2rem;
+  border-right: 1px solid var(--rule);
+}
+.edu-card:last-child { border-right: none; }
+.edu-card .deg {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "SOFT" 100, "opsz" 36;
+  font-size: 1.05rem;
+  color: var(--vermilion);
+  margin-bottom: 0.4rem;
+}
+.edu-card .school {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-variation-settings: "SOFT" 30, "opsz" 72;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+.edu-card .meta-row {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.edu-card .meta-row .gpa {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.15rem 0.4rem;
+  letter-spacing: 0.05em;
+}
+
+.edu-card .where {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 18;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 720px) {
+  .edu-grid { grid-template-columns: 1fr; }
+  .edu-card { border-right: none; border-bottom: 1px solid var(--rule); }
+  .edu-card:last-child { border-bottom: none; }
+}
+
+/* ───────────────────────────────────────────────
+   THE MARGINS / PERSONAL
+   ─────────────────────────────────────────────── */
+.margins-intro {
+  max-width: 720px;
+  margin: 0 auto clamp(2rem, 4vw, 3.5rem);
+  text-align: center;
+}
+.margins-intro p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.45;
+  color: var(--ink-soft);
+  font-variation-settings: "SOFT" 100, "opsz" 36;
+}
+.margins-intro em {
+  color: var(--vermilion);
+  font-style: italic;
+}
+
+/* Favorites + stats topline */
+.lb-topline {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5rem clamp(1rem, 3vw, 2rem);
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  margin-bottom: 2rem;
+}
+.lb-label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.lb-fave-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+.lb-fave {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "SOFT" 100, "opsz" 48;
+  font-size: clamp(1.15rem, 2vw, 1.6rem);
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.lb-fave i {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  vertical-align: middle;
+  margin-left: 0.2rem;
+}
+.lb-stats {
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+}
+.lb-stat { text-align: center; }
+.lb-stat .big {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  color: var(--vermilion);
+  letter-spacing: -0.03em;
+}
+.lb-stat .cap {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 0.35rem;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .lb-topline { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+/* Recently logged */
+.lb-recent-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.lb-cat {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-variation-settings: "SOFT" 100, "opsz" 144;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  color: var(--vermilion);
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.lb-live {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border: 1px solid var(--rule);
+  padding: 0.2rem 0.45rem;
+  border-radius: 2px;
+  white-space: nowrap;
+  transition: color 0.3s, border-color 0.3s;
+}
+.lb-live.ok { color: var(--sage); border-color: var(--sage); }
+.lb-live.ok::before { content: '● '; color: var(--sage); }
+.lb-live.stale { color: var(--ochre); border-color: var(--ochre); }
+.lb-profile-link {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ochre);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.lb-profile-link:hover { color: var(--vermilion); border-color: var(--vermilion); }
+
+.lb-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.lb-card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.lb-card:hover { transform: translateY(-6px); }
+
+.lb-poster {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  overflow: hidden;
+  display: block;
+  box-shadow: 3px 3px 0 var(--rule);
+  transition: box-shadow 0.3s;
+}
+.lb-card:hover .lb-poster { box-shadow: 5px 5px 0 var(--vermilion); }
+
+/* Typographic poster (no images — fully generated from text) */
+.lb-pf {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.7rem 0.6rem;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(193,57,29,0.25), transparent 60%),
+    var(--ink);
+}
+.lb-pf::after {
+  content: '';
+  position: absolute;
+  inset: 0.35rem;
+  border: 1px solid rgba(244,239,225,0.25);
+  pointer-events: none;
+}
+.lb-pf-t {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-variation-settings: "SOFT" 30, "opsz" 36;
+  font-size: 0.92rem;
+  line-height: 1.05;
+  color: var(--paper);
+  letter-spacing: -0.01em;
+  z-index: 1;
+}
+.lb-pf-y {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: var(--highlight);
+  z-index: 1;
+}
+
+.lb-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.lb-title {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 18;
+  font-size: 0.82rem;
+  line-height: 1.15;
+  color: var(--ink);
+  font-weight: 500;
+}
+.lb-date {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-faint);
+}
+.lb-date .star { color: var(--vermilion); }
+
+@media (max-width: 900px) {
+  .lb-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 460px) {
+  .lb-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ───────────────────────────────────────────────
+   COLOPHON / FOOTER
+   ─────────────────────────────────────────────── */
+footer {
+  position: relative;
+  z-index: 2;
+  padding: clamp(4rem, 8vw, 7rem) var(--page-pad) 2rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  inset-inline: var(--page-pad);
+  top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--vermilion) 0%, var(--vermilion) 30%, transparent 30%, transparent 35%, var(--vermilion) 35%, var(--vermilion) 65%, transparent 65%, transparent 70%, var(--vermilion) 70%);
+}
+
+.footer-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.footer-mast {
+  font-family: var(--serif);
+  font-variation-settings: "SOFT" 100, "opsz" 144;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-style: italic;
+  font-weight: 400;
+}
+.footer-mast em {
+  font-style: normal;
+  color: var(--highlight);
+}
+
+.footer-cta {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24;
+  font-size: 1.2rem;
+  margin-top: 1.25rem;
+  max-width: 36ch;
+  color: var(--paper-deep);
+  line-height: 1.4;
+}
+
+.footer-col h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--highlight);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(244, 239, 225, 0.15);
+}
+
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.6rem; }
+.footer-col a {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24;
+  font-size: 1.05rem;
+  color: var(--paper);
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  transition: color 0.2s, transform 0.2s;
+}
+.footer-col a::after {
+  content: '↗';
+  margin-left: 0.4rem;
+  font-size: 0.85em;
+  opacity: 0.5;
+  transition: opacity 0.2s, transform 0.2s;
+  display: inline-block;
+}
+.footer-col a:hover { color: var(--highlight); }
+.footer-col a:hover::after { opacity: 1; transform: translate(2px, -2px); }
+
+.colophon {
+  max-width: var(--max-w);
+  margin: 4rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(244, 239, 225, 0.15);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--paper-deep);
+  opacity: 0.7;
+}
+
+@media (max-width: 720px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ───────────────────────────────────────────────
+   REVEAL ANIMATIONS
+   ─────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.35s; }
+.delay-4 { transition-delay: 0.5s; }
+
+</style>
+</head>
+<body>
+
+<!-- ─────────────  MASTHEAD  ───────────── -->
+<header class="masthead">
+  <div class="left">JAIMIN BABARIA &nbsp;·&nbsp; PORTFOLIO '26</div>
+  <div class="right">CHICAGO &nbsp;·&nbsp; MMXXVI</div>
+</header>
+
+<!-- ─────────────  HERO  ───────────── -->
+<div class="hero">
+  <div class="hero-grid">
+
+    <div class="volume-line">
+      <span class="meta">Established 2024 &nbsp;—&nbsp; A Working Record</span>
+      <span class="meta">Sun. 17 May 2026</span>
+    </div>
+
+    <div class="title-block">
+      <h1 class="name reveal">
+        <span class="first">Jaimin</span>
+        <span class="last">Babaria.</span>
+      </h1>
+
+      <p class="tagline reveal delay-2">
+        Software and data engineer wrapping up an MS in Computer Science at the University of Illinois Chicago. I build the things that <em>ship</em> — data pipelines, REST APIs, orchestrated ETL, full-stack applications — and I'm rigorous about whether what I just shipped actually works.
+      </p>
+    </div>
+
+    <div class="hero-footer reveal delay-3">
+      <div class="field">
+        <span class="label">Position</span>
+        <span class="value italic-serif">MS Computer Science, '26</span>
+      </div>
+      <div class="field">
+        <span class="label">Located</span>
+        <span class="value italic-serif">Chicago, Illinois</span>
+      </div>
+      <div class="field">
+        <span class="label">Availability</span>
+        <span class="value italic-serif">May 2026</span>
+      </div>
+      <div class="field">
+        <span class="label">Correspondence</span>
+        <span class="value"><a href="#colophon">View ledger ↓</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ornamental flourish -->
+  <svg class="ornament" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M50 0 L50 200" stroke="#1a1815" stroke-width="0.5"/>
+    <circle cx="50" cy="20" r="3" fill="#c1391d"/>
+    <circle cx="50" cy="100" r="3" fill="#1a1815"/>
+    <circle cx="50" cy="180" r="3" fill="#c1391d"/>
+    <path d="M40 100 Q50 90 60 100 Q50 110 40 100 Z" fill="#1a1815"/>
+  </svg>
+</div>
+
+<!-- ─────────────  FEATURED: FAIRFINANCE  ─────────────  -->
+<section id="featured" class="featured">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="num">№ 01</span>
+      <h2>The <em>Feature</em></h2>
+      <span class="right-meta">Featured Project</span>
+    </div>
+
+    <div class="reveal">
+      <span class="featured-badge">Flagship Project · 2025</span>
+      <h3 class="featured-title">FairFinance <em>AI</em> — Auditing socioeconomic bias in LLM-generated financial advice.</h3>
+      <p class="featured-sub">APPLIED ML PROJECT &nbsp;·&nbsp; UNIVERSITY OF ILLINOIS CHICAGO &nbsp;·&nbsp; <span>648 RESPONSES &nbsp;·&nbsp; 3 MODELS &nbsp;·&nbsp; 1 UNCOMFORTABLE FINDING</span></p>
+    </div>
+
+    <div class="featured-grid">
+
+      <!-- LEFT: PROSE & FINDINGS -->
+      <div class="featured-prose reveal delay-2">
+        <p class="lede">
+          Do large language models give worse financial advice to people who sound poor? Three frontier models. A controlled audit. The answer was both yes and methodologically inconvenient.
+        </p>
+        <p>
+          I designed a controlled audit framework grounding prompts in the <strong>Chicago Community Area Hardship Index</strong>, then evaluated <strong>GPT-4o-mini, LLaMA-3.3 70B, and Gemini-3 Flash</strong> across 648 paired responses. To score the responses at concept-level rather than surface-level, I built a hybrid scoring algorithm combining regex pattern matching with DeBERTa-v3 natural language inference — validated against human annotation on 150 labels.
+        </p>
+        <p>
+          The crucial step was a <strong>counterfactual signal ablation</strong> isolating which demographic cue actually drives the gap. Stripping signals one at a time across all three models pointed to a single causal driver — not the zip code, not the job title.
+        </p>
+
+        <ul class="findings-list">
+          <li>
+            <span class="marker">FINDING 01</span>
+            <span class="text">Statistically significant accuracy gaps favored <strong>high-SES users across every model audited</strong>: GPT ΔA = +0.048 · LLaMA ΔA = +0.133 · Gemini ΔA = +0.124. <em>All three failed the 80% Disparate Impact Rule.</em></span>
+          </li>
+          <li>
+            <span class="marker">FINDING 02</span>
+            <span class="text">Counterfactual ablation isolated <strong>education level as the sole causal driver</strong> of the accuracy gap across all models (p &lt; 0.01). Neighborhood and job title produced no statistically significant effect.</span>
+          </li>
+          <li>
+            <span class="marker">FINDING 03</span>
+            <span class="text">Regex-only evaluation <em>completely missed Gemini's bias</em> (p = 0.28 regex vs. p &lt; 0.001 NLI) — exposing a methodological gap in standard fairness auditing.</span>
+          </li>
+          <li>
+            <span class="marker">FINDING 04</span>
+            <span class="text">Hybrid NLI scoring achieved <strong>Cohen's κ = 0.977</strong> against human annotation — near-perfect inter-rater reliability at scale.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- RIGHT: DATA PANEL -->
+      <aside class="data-panel reveal delay-3">
+
+        <div class="panel-head">
+          <span class="title">Statistical findings</span>
+          <span class="n">n = 648</span>
+        </div>
+
+        <div class="kappa-callout">
+          <div class="big">0.977</div>
+          <div class="desc">
+            <strong>Cohen's κ</strong>
+            Hybrid NLI scoring vs. human annotation across 150 concept-level labels — near-perfect agreement.
+          </div>
+        </div>
+
+        <div class="bias-chart">
+          <div class="chart-label">
+            <span>Accuracy gap (ΔA) by model</span>
+            <span>HIGH-SES ADVANTAGE →</span>
+          </div>
+
+          <div class="bar-row" data-bar="0.36">
+            <span class="model">GPT-4o</span>
+            <div class="track"><div class="fill" style="width: 36%;"></div></div>
+            <span class="val">+0.048</span>
+          </div>
+          <div class="bar-row" data-bar="1.0">
+            <span class="model">LLaMA-3</span>
+            <div class="track"><div class="fill" style="width: 100%;"></div></div>
+            <span class="val">+0.133</span>
+          </div>
+          <div class="bar-row" data-bar="0.93">
+            <span class="model">Gemini-3</span>
+            <div class="track"><div class="fill" style="width: 93%;"></div></div>
+            <span class="val">+0.124</span>
+          </div>
+        </div>
+
+        <div class="dir-rule">
+          <div class="head">80% Disparate Impact Rule</div>
+          <div class="verdict">All three models — fail.</div>
+          <div class="detail">No audited model met the regulatory threshold for fair treatment across SES groups.</div>
+        </div>
+
+        <div>
+          <div class="chart-label" style="font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.6rem;">
+            <span>Method comparison · Gemini bias detection</span>
+          </div>
+          <div class="method-compare">
+            <div class="cell">
+              <div class="label">Regex only</div>
+              <div class="pval">p = 0.28</div>
+            </div>
+            <div class="cell win">
+              <div class="label">Hybrid NLI</div>
+              <div class="pval">p &lt; 0.001<span class="tag">— bias surfaced</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-stack">
+          <div class="label">Toolchain</div>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">HuggingFace</span>
+            <span class="tag">DeBERTa-v3</span>
+            <span class="tag">scikit-learn</span>
+            <span class="tag">SciPy</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Matplotlib</span>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────  OTHER PROJECTS  ───────────── -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="num">№ 02</span>
+      <h2>Selected <em>Works</em></h2>
+      <span class="right-meta">Engineering</span>
+    </div>
+
+    <div class="project-list">
+
+      <article class="project-entry reveal">
+        <div class="num">↳ 02·1</div>
+        <div class="main">
+          <h3 class="project-title">CTA Transit <em>Equity &amp; Reliability</em> Pipeline</h3>
+          <div class="project-meta">Data Engineering · 77 Community Areas</div>
+        </div>
+        <div class="project-desc">
+          Built a transit-reliability pipeline polling the CTA Bus Tracker API every 60s and joining GTFS schedule data in PostGIS, with dbt-modeled fact tables computing on-time performance, headway adherence, and ghost-bus rates per route via time-series window functions — orchestrated as a Dockerized Airflow DAG. Quantified reliability disparities across all 77 Chicago community areas by overlaying ACS demographic data on arrival events, surfacing the KPIs through a published Tableau dashboard with Great Expectations checkpoints gating mart publication.
+          <div>
+            <span class="pill">Python</span><span class="pill">PostgreSQL / PostGIS</span><span class="pill">dbt</span><span class="pill">Airflow</span><span class="pill">Docker</span><span class="pill">Great Expectations</span><span class="pill">Tableau</span>
+          </div>
+        </div>
+
+        <a class="project-arrow" href="https://github.com/jaiminbabaria" target="_blank" rel="noopener" aria-label="View on GitHub">→</a>
+      </article>
+
+      <article class="project-entry reveal">
+        <div class="num">↳ 02·2</div>
+        <div class="main">
+          <h3 class="project-title">GitHub PR <em>Automated</em> Code Reviewer</h3>
+          <div class="project-meta">Event-Driven · AWS Serverless · LLM</div>
+        </div>
+        <div class="project-desc">
+          Built an event-driven AWS pipeline (SNS → SQS with DLQ → Lambda → DynamoDB → CloudWatch) that automatically reviews GitHub pull requests with the OpenAI API and posts inline code-review comments through the GitHub Apps API — removing the manual first-pass review entirely. A FastAPI REST layer over DynamoDB exposes review history, per-repository stats, and aggregate metrics with full job-lifecycle status tracking for end-to-end auditability.
+          <div>
+            <span class="pill">Python</span><span class="pill">FastAPI</span><span class="pill">AWS Lambda</span><span class="pill">SNS / SQS</span><span class="pill">DynamoDB</span><span class="pill">GitHub API</span><span class="pill">OpenAI API</span>
+          </div>
+        </div>
+
+        <a class="project-arrow" href="https://github.com/jaiminbabaria" target="_blank" rel="noopener" aria-label="View on GitHub">→</a>
+      </article>
+
+      <article class="project-entry reveal">
+        <div class="num">↳ 02·3</div>
+        <div class="main">
+          <h3 class="project-title">RAG <em>PDF</em> Assistant</h3>
+          <div class="project-meta">Retrieval-Augmented Generation</div>
+        </div>
+        <div class="project-desc">
+          Engineered an end-to-end document QA system with chunked multi-PDF ingestion, a FAISS vector store over OpenAI embeddings, and Streamlit session state for conversational continuity — answers surfaced with inline source citations from the source PDFs.
+          <div>
+            <span class="pill">Python</span><span class="pill">LangChain</span><span class="pill">FAISS</span><span class="pill">OpenAI API</span><span class="pill">Streamlit</span><span class="pill">PyPDF2</span>
+          </div>
+        </div>
+        <a class="project-arrow" href="https://github.com/jaiminbabaria/rag-pdf-assistant" target="_blank" rel="noopener" aria-label="View on GitHub">→</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────  EXPERIENCE  ───────────── -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="num">№ 03</span>
+      <h2>The <em>Record</em></h2>
+      <span class="right-meta">Experience</span>
+    </div>
+
+    <div class="exp-grid">
+
+      <article class="exp-entry reveal">
+        <div class="exp-when">
+          Aug 2024 — May 2026
+          <span class="now">currently</span>
+        </div>
+        <div>
+          <h3 class="exp-role">Data &amp; Operations <em>Assistant</em></h3>
+          <div class="exp-org">
+            <span>UI Health · University of Illinois Hospital</span>
+            <span class="sep">/</span>
+            <span>Chicago, IL</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Built Python and advanced Excel <strong>macro/VBA automations</strong> that ingested, validated, and reconciled data in the EP Evaluator system — <em>cut manual data-entry time by 50%</em> and improved record accuracy.</li>
+            <li>Designed data-driven inventory reporting for medical-supply tracking, surfacing live stock levels and reorder thresholds that kept procurement on schedule across multiple hospital departments.</li>
+            <li>Supported patient-data management and daily operations in the <strong>Epic EHR</strong>, maintaining HIPAA-aligned handling standards across administrative workflows.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="exp-entry reveal">
+        <div class="exp-when">Jan 2024 — Jun 2024</div>
+        <div>
+          <h3 class="exp-role">Software Engineer <em>Intern</em></h3>
+          <div class="exp-org">
+            <span>TatvaSoft</span>
+            <span class="sep">/</span>
+            <span>Ahmedabad, India</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Profiled and optimized REST APIs and <strong>data-processing pipelines</strong> for a portfolio-management platform — <em>cut average response time 30%</em> and improved throughput 20% via query optimization, caching, and endpoint restructuring.</li>
+            <li>Integrated Python services with Django and SQL databases in an Agile environment, <em>reducing the production bug rate 15%</em> and accelerating data-feature deployment cycles.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="exp-entry reveal">
+        <div class="exp-when">Aug 2023 — Dec 2023</div>
+        <div>
+          <h3 class="exp-role">Team <em>Lead</em> — Margdarshak</h3>
+          <div class="exp-org">
+            <span>Nirma University · State-Funded IoT Project</span>
+            <span class="sep">/</span>
+            <span>Ahmedabad, India</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Led a 4-engineer team building a state-funded IoT navigation system, programming <strong>ESP32 and SIM800L</strong> modules over Arduino to stream JSON sensor telemetry (rain, humidity, temperature) into an AWS storage pipeline for real-time route visualization.</li>
+            <li>Designed a CI/CD-ready configuration interface for live sensor requests — <em>improved data accessibility 40%</em> and lowered response latency across distributed IoT nodes.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────  EDUCATION  ───────────── -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="num">№ 04</span>
+      <h2>The <em>Schooling</em></h2>
+      <span class="right-meta">Academic Record</span>
+    </div>
+
+    <div class="edu-grid reveal">
+      <div class="edu-card">
+        <div class="deg">Master of Science, Computer Science</div>
+        <div class="school">University of Illinois Chicago</div>
+        <div class="meta-row">
+          <span>Aug 2024 — May 2026</span>
+          <span class="gpa">GPA · 4.0 / 4.0</span>
+        </div>
+        <div class="where">Chicago, Illinois</div>
+      </div>
+      <div class="edu-card">
+        <div class="deg">Bachelor of Technology, CSE</div>
+        <div class="school">Nirma University</div>
+        <div class="meta-row">
+          <span>Aug 2021 — May 2024</span>
+        </div>
+        <div class="where">Ahmedabad, India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────  SKILLS INDEX  ───────────── -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="num">№ 05</span>
+      <h2>The <em>Toolkit</em></h2>
+      <span class="right-meta">Index of Working Tools</span>
+    </div>
+
+    <div class="skill-grid reveal">
+
+      <div class="skill-col">
+        <div class="cat">Languages</div>
+        <ul>
+          <li>Python</li>
+          <li>SQL</li>
+          <li>Java</li>
+          <li>C++</li>
+          <li>JavaScript</li>
+        </ul>
+      </div>
+
+      <div class="skill-col">
+        <div class="cat">Data Engineering</div>
+        <ul>
+          <li>PostgreSQL · PostGIS</li>
+          <li>dbt</li>
+          <li>Apache Airflow</li>
+          <li>Pandas · NumPy</li>
+          <li>ETL Pipelines</li>
+          <li>Tableau · Power BI</li>
+        </ul>
+      </div>
+
+      <div class="skill-col">
+        <div class="cat">Cloud &amp; DevOps</div>
+        <ul>
+          <li>AWS Lambda · SQS · SNS</li>
+          <li>DynamoDB · S3</li>
+          <li>EC2 · CloudWatch</li>
+          <li>Docker</li>
+          <li>Git · GitHub</li>
+        </ul>
+      </div>
+
+      <div class="skill-col">
+        <div class="cat">Frameworks &amp; Databases</div>
+        <ul>
+          <li>FastAPI</li>
+          <li>Django · Flask</li>
+          <li>React.js · Node.js</li>
+          <li>REST APIs</li>
+          <li>MySQL · MongoDB</li>
+        </ul>
+      </div>
+
+      <div class="skill-col">
+        <div class="cat">Machine Learning</div>
+        <ul>
+          <li>Scikit-learn</li>
+          <li>PyTorch</li>
+          <li>TensorFlow</li>
+          <li>Hugging Face</li>
+          <li>Fairlearn</li>
+          <li>RAG</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────  THE MARGINS / PERSONAL  ───────────── -->
+<section id="margins">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="num">№ 06</span>
+      <h2>The <em>Margins</em></h2>
+      <span class="right-meta">Off the Clock</span>
+    </div>
+
+    <div class="margins-intro reveal">
+      <p>I'm not a terminal with a 4.0 GPA — I watch a <em>lot</em> of movies. 565 logged and counting, and my bio over there reads <em>"Letterboxd over LinkedIn."</em> Connect with me on both.</p>
+    </div>
+
+    <!-- Favorites + stats -->
+    <div class="lb-topline reveal">
+      <div class="lb-faves">
+        <span class="lb-label">All-time favorites</span>
+        <div class="lb-fave-list">
+          <span class="lb-fave">One Battle After Another <i>2025</i></span>
+          <span class="lb-fave">Past Lives <i>2023</i></span>
+        </div>
+      </div>
+      <div class="lb-stats">
+        <div class="lb-stat"><span class="big">565</span><span class="cap">Films logged</span></div>
+        <div class="lb-stat"><span class="big">51</span><span class="cap">In 2026</span></div>
+      </div>
+    </div>
+
+    <!-- Recently logged — pulled live from Letterboxd -->
+    <div class="lb-recent reveal">
+      <div class="lb-recent-head">
+        <span class="lb-cat">Recently Logged <span class="lb-live" id="lb-live">syncing…</span></span>
+        <a class="lb-profile-link" href="https://letterboxd.com/jaiminBabaria/" target="_blank" rel="noopener">Full diary on Letterboxd ↗</a>
+      </div>
+
+      <div class="lb-grid" id="lb-grid">
+        <!-- Static fallback (also the no-JS view). JS replaces this with live data when the feed loads. -->
+        <a class="lb-card" href="https://letterboxd.com/jaiminBabaria/film/backrooms-2026/" target="_blank" rel="noopener">
+          <span class="lb-poster"><span class="lb-pf"><span class="lb-pf-t">Backrooms</span><span class="lb-pf-y">2026</span></span></span>
+          <span class="lb-meta"><span class="lb-title">Backrooms</span><span class="lb-date">Jun 3, 2026</span></span>
+        </a>
+        <a class="lb-card" href="https://letterboxd.com/jaiminBabaria/film/bee-movie/" target="_blank" rel="noopener">
+          <span class="lb-poster"><span class="lb-pf"><span class="lb-pf-t">Bee Movie</span><span class="lb-pf-y">2007</span></span></span>
+          <span class="lb-meta"><span class="lb-title">Bee Movie</span><span class="lb-date">Jun 2, 2026</span></span>
+        </a>
+        <a class="lb-card" href="https://letterboxd.com/jaiminBabaria/film/obsession-2025-2/" target="_blank" rel="noopener">
+          <span class="lb-poster"><span class="lb-pf"><span class="lb-pf-t">Obsession</span><span class="lb-pf-y">2025</span></span></span>
+          <span class="lb-meta"><span class="lb-title">Obsession</span><span class="lb-date">May 27, 2026</span></span>
+        </a>
+        <a class="lb-card" href="https://letterboxd.com/jaiminBabaria/film/lee-cronins-the-mummy/" target="_blank" rel="noopener">
+          <span class="lb-poster"><span class="lb-pf"><span class="lb-pf-t">The Mummy</span><span class="lb-pf-y">2026</span></span></span>
+          <span class="lb-meta"><span class="lb-title">Lee Cronin's The Mummy</span><span class="lb-date">May 24, 2026</span></span>
+        </a>
+        <a class="lb-card" href="https://letterboxd.com/jaiminBabaria/film/apex-2026/" target="_blank" rel="noopener">
+          <span class="lb-poster"><span class="lb-pf"><span class="lb-pf-t">Apex</span><span class="lb-pf-y">2026</span></span></span>
+          <span class="lb-meta"><span class="lb-title">Apex</span><span class="lb-date">Apr 30, 2026</span></span>
+        </a>
+        <a class="lb-card" href="https://letterboxd.com/jaiminBabaria/film/bareilly-ki-barfi/" target="_blank" rel="noopener">
+          <span class="lb-poster"><span class="lb-pf"><span class="lb-pf-t">Bareilly Ki Barfi</span><span class="lb-pf-y">2017</span></span></span>
+          <span class="lb-meta"><span class="lb-title">Bareilly Ki Barfi</span><span class="lb-date">Apr 18, 2026</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────  FOOTER / COLOPHON  ───────────── -->
+<footer id="colophon">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-mast">Let's <em>talk.</em></div>
+      <p class="footer-cta">Available May 2026 for full-time software engineering, data engineering, and ML engineering roles. Based in Chicago, open to relocation.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Correspondence</h4>
+      <ul>
+
+        <li><a href="mailto:jaiminbabaria.job@gmail.com">jaiminbabaria.job@gmail.com</a></li>
+        <li><a href="tel:+18476547104">+1 (847) 654-7104</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Elsewhere</h4>
+      <ul>
+
+        <li><a href="https://www.linkedin.com/in/jaimin-babaria-3655891a7/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/jaiminBabaria" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://letterboxd.com/jaiminBabaria/" target="_blank" rel="noopener">Letterboxd</a></li>
+        <!-- Résumé resolves to Jaimin_Babaria_Resume.pdf sitting next to index.html in your repo -->
+        <li><a href="Jaimin_Babaria_Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="colophon">
+    <div>© MMXXVI · Jaimin Babaria · All rights reserved</div>
+    <div>Set in Fraunces, Newsreader &amp; JetBrains Mono</div>
+    <div>Hand-built · No CMS · No tracking</div>
+  </div>
+</footer>
+
+<script>
+// ───────────────────────────────────────────────
+// REVEAL ON SCROLL
+// ───────────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // For bar rows, also trigger fill animation
+      if (entry.target.classList.contains('bar-row')) {
+        entry.target.classList.add('in-view');
+      }
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Bar row staggered fill
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, idx) => {
+    if (entry.isIntersecting) {
+      // Stagger all bars in the same panel
+      const bars = entry.target.parentElement.querySelectorAll('.bar-row');
+      bars.forEach((bar, i) => {
+        setTimeout(() => bar.classList.add('in-view'), i * 200);
+      });
+      barObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const firstBar = document.querySelector('.bar-row');
+if (firstBar) barObserver.observe(firstBar);
+
+// Trigger initial reveals for hero
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
+  }, 100);
+});
+
+// ───────────────────────────────────────────────
+// LETTERBOXD — "recently logged" feed
+// Reads films.json, which a daily GitHub Action keeps
+// fresh from your Letterboxd RSS. Same-origin = no CORS,
+// no third-party proxies. If films.json is missing or
+// fails to load, the static fallback cards stay.
+// ───────────────────────────────────────────────
+(function () {
+  const MAX = 6;
+  const grid = document.getElementById('lb-grid');
+  const live = document.getElementById('lb-live');
+  if (!grid) return;
+
+  const esc = s => (s == null ? '' : String(s)).replace(/[&<>"]/g, c => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]
+  ));
+
+  function stars(rating) {
+    const r = parseFloat(rating);
+    if (!r || isNaN(r)) return '';
+    const full = Math.floor(r);
+    const half = r - full >= 0.5;
+    return '<span class="star">' + '★'.repeat(full) + (half ? '½' : '') + '</span>';
+  }
+
+  // Compact a long title for the typographic poster (keeps cards tidy).
+  function posterTitle(t) {
+    t = t || '';
+    return t.length > 22 ? t.slice(0, 21).trimEnd() + '…' : t;
+  }
+
+  function cardHTML(film) {
+    const dateLine = (film.rating ? stars(film.rating) + '&nbsp; ' : '') + esc(film.date);
+    return '' +
+      '<a class="lb-card" href="' + esc(film.url) + '" target="_blank" rel="noopener">' +
+        '<span class="lb-poster">' +
+          '<span class="lb-pf"><span class="lb-pf-t">' + esc(posterTitle(film.title)) + '</span>' +
+          '<span class="lb-pf-y">' + esc(film.year) + '</span></span>' +
+        '</span>' +
+        '<span class="lb-meta">' +
+          '<span class="lb-title">' + esc(film.title) + '</span>' +
+          '<span class="lb-date">' + dateLine + '</span>' +
+        '</span>' +
+      '</a>';
+  }
+
+  async function load() {
+    try {
+      const res = await fetch('films.json', { cache: 'no-cache' });
+      if (!res.ok) throw new Error('http ' + res.status);
+      const data = await res.json();
+      const films = (data.films || []).slice(0, MAX);
+      if (films.length) {
+        grid.innerHTML = films.map(cardHTML).join('');
+        if (live) { live.textContent = 'live'; live.className = 'lb-live ok'; }
+        return;
+      }
+      throw new Error('empty feed');
+    } catch (e) {
+      // films.json missing / not generated yet → keep static fallback cards.
+      if (live) { live.textContent = 'recent'; live.className = 'lb-live stale'; }
+    }
+  }
+
+  // Fetch once the section nears the viewport.
+  const section = document.getElementById('margins');
+  if ('IntersectionObserver' in window && section) {
+    const io = new IntersectionObserver((entries, obs) => {
+      if (entries.some(e => e.isIntersecting)) { obs.disconnect(); load(); }
+    }, { rootMargin: '200px' });
+    io.observe(section);
+  } else {
+    load();
+  }
+})();
+</script>
+
+</body>
+</html>
