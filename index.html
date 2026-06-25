@@ -1556,7 +1556,7 @@ footer::before {
             <span class="pill">Python</span><span class="pill">PostgreSQL / PostGIS</span><span class="pill">dbt</span><span class="pill">Airflow</span><span class="pill">Docker</span><span class="pill">Great Expectations</span><span class="pill">Tableau</span>
           </div>
         </div>
-
+        <!-- EDIT: replace # with your GitHub repo URL when it's public -->
         <a class="project-arrow" href="https://github.com/jaiminbabaria" target="_blank" rel="noopener" aria-label="View on GitHub">→</a>
       </article>
 
@@ -1572,7 +1572,7 @@ footer::before {
             <span class="pill">Python</span><span class="pill">FastAPI</span><span class="pill">AWS Lambda</span><span class="pill">SNS / SQS</span><span class="pill">DynamoDB</span><span class="pill">GitHub API</span><span class="pill">OpenAI API</span>
           </div>
         </div>
-
+        <!-- EDIT: replace with the specific repo URL when it's public -->
         <a class="project-arrow" href="https://github.com/jaiminbabaria" target="_blank" rel="noopener" aria-label="View on GitHub">→</a>
       </article>
 
@@ -1779,17 +1779,17 @@ footer::before {
     </div>
 
     <!-- Favorites + stats -->
-    <div class="lb-topline reveal">
+    <!-- Favorites + stats — populated from films.json by JS -->
+    <div class="lb-topline reveal" id="lb-topline">
       <div class="lb-faves">
         <span class="lb-label">All-time favorites</span>
-        <div class="lb-fave-list">
-          <span class="lb-fave">One Battle After Another <i>2025</i></span>
-          <span class="lb-fave">Past Lives <i>2023</i></span>
+        <div class="lb-fave-list" id="lb-fave-list">
+          <span class="lb-fave" style="opacity:0.4;font-style:italic">loading…</span>
         </div>
       </div>
       <div class="lb-stats">
-        <div class="lb-stat"><span class="big">565</span><span class="cap">Films logged</span></div>
-        <div class="lb-stat"><span class="big">51</span><span class="cap">In 2026</span></div>
+        <div class="lb-stat"><span class="big" id="lb-total">—</span><span class="cap">Films logged</span></div>
+        <div class="lb-stat"><span class="big" id="lb-year">—</span><span class="cap">This year</span></div>
       </div>
     </div>
 
@@ -1842,7 +1842,7 @@ footer::before {
     <div class="footer-col">
       <h4>Correspondence</h4>
       <ul>
-
+        <!-- EDIT: replace with your real email -->
         <li><a href="mailto:jaiminbabaria.job@gmail.com">jaiminbabaria.job@gmail.com</a></li>
         <li><a href="tel:+18476547104">+1 (847) 654-7104</a></li>
       </ul>
@@ -1851,8 +1851,8 @@ footer::before {
     <div class="footer-col">
       <h4>Elsewhere</h4>
       <ul>
-
-        <li><a href="https://www.linkedin.com/in/jaimin-babaria-3655891a7/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <!-- EDIT: confirm these three URLs match your real profiles -->
+        <li><a href="https://www.linkedin.com/in/jaiminbabaria/" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="https://github.com/jaiminBabaria" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="https://letterboxd.com/jaiminBabaria/" target="_blank" rel="noopener">Letterboxd</a></li>
         <!-- Résumé resolves to Jaimin_Babaria_Resume.pdf sitting next to index.html in your repo -->
@@ -1962,6 +1962,24 @@ window.addEventListener('load', () => {
       const res = await fetch('films.json', { cache: 'no-cache' });
       if (!res.ok) throw new Error('http ' + res.status);
       const data = await res.json();
+
+      // ── favorites ──────────────────────────────────────────────────────────
+      const faveList = document.getElementById('lb-fave-list');
+      if (faveList && Array.isArray(data.favorites) && data.favorites.length) {
+        faveList.innerHTML = data.favorites.map(f =>
+          '<span class="lb-fave">' + esc(f.title) +
+          (f.year ? ' <i>' + esc(f.year) + '</i>' : '') + '</span>'
+        ).join('');
+      }
+
+      // ── stats ──────────────────────────────────────────────────────────────
+      const st = data.stats || {};
+      const totalEl = document.getElementById('lb-total');
+      const yearEl  = document.getElementById('lb-year');
+      if (totalEl && st.total != null) totalEl.textContent = st.total.toLocaleString();
+      if (yearEl  && st.this_year != null) yearEl.textContent = st.this_year.toLocaleString();
+
+      // ── recent films ───────────────────────────────────────────────────────
       const films = (data.films || []).slice(0, MAX);
       if (films.length) {
         grid.innerHTML = films.map(cardHTML).join('');
