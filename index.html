@@ -1157,6 +1157,28 @@ section {
 }
 .lb-card:hover .lb-poster { box-shadow: 5px 5px 0 var(--vermilion); }
 
+/* Loading skeleton — shown until films.json loads */
+.lb-skeleton .lb-poster {
+  background: var(--paper-deep);
+  border-color: var(--rule);
+  box-shadow: 3px 3px 0 var(--rule);
+  animation: skeletonPulse 1.6s ease-in-out infinite;
+}
+.lb-skeleton .lb-title,
+.lb-skeleton .lb-date {
+  background: var(--paper-deep);
+  color: transparent;
+  display: inline-block;
+  min-height: 0.9em;
+  border-radius: 1px;
+  animation: skeletonPulse 1.6s ease-in-out infinite;
+}
+.lb-skeleton .lb-date { width: 60%; }
+@keyframes skeletonPulse {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 0.85; }
+}
+
 /* Typographic poster (no images — fully generated from text) */
 .lb-pf {
   position: absolute;
@@ -1775,7 +1797,7 @@ footer::before {
     </div>
 
     <div class="margins-intro reveal">
-      <p>I'm not a terminal with a 4.0 GPA — I watch a <em>lot</em> of movies. 565 logged and counting, and my bio over there reads <em>"Letterboxd over LinkedIn."</em> Connect with me on both.</p>
+      <p>I'm not a terminal with a 4.0 GPA — I watch a <em>lot</em> of movies. <span id="lb-intro-count">many</span> logged and counting, and my bio over there reads <em>"Letterboxd over LinkedIn."</em> Connect with me on both.</p>
     </div>
 
     <!-- Favorites + stats -->
@@ -1801,31 +1823,13 @@ footer::before {
       </div>
 
       <div class="lb-grid" id="lb-grid">
-        <!-- Static fallback (also the no-JS view). JS replaces this with live data when the feed loads. -->
-        <a class="lb-card" href="https://letterboxd.com/jaiminBabaria/film/backrooms-2026/" target="_blank" rel="noopener">
-          <span class="lb-poster"><span class="lb-pf"><span class="lb-pf-t">Backrooms</span><span class="lb-pf-y">2026</span></span></span>
-          <span class="lb-meta"><span class="lb-title">Backrooms</span><span class="lb-date">Jun 3, 2026</span></span>
-        </a>
-        <a class="lb-card" href="https://letterboxd.com/jaiminBabaria/film/bee-movie/" target="_blank" rel="noopener">
-          <span class="lb-poster"><span class="lb-pf"><span class="lb-pf-t">Bee Movie</span><span class="lb-pf-y">2007</span></span></span>
-          <span class="lb-meta"><span class="lb-title">Bee Movie</span><span class="lb-date">Jun 2, 2026</span></span>
-        </a>
-        <a class="lb-card" href="https://letterboxd.com/jaiminBabaria/film/obsession-2025-2/" target="_blank" rel="noopener">
-          <span class="lb-poster"><span class="lb-pf"><span class="lb-pf-t">Obsession</span><span class="lb-pf-y">2025</span></span></span>
-          <span class="lb-meta"><span class="lb-title">Obsession</span><span class="lb-date">May 27, 2026</span></span>
-        </a>
-        <a class="lb-card" href="https://letterboxd.com/jaiminBabaria/film/lee-cronins-the-mummy/" target="_blank" rel="noopener">
-          <span class="lb-poster"><span class="lb-pf"><span class="lb-pf-t">The Mummy</span><span class="lb-pf-y">2026</span></span></span>
-          <span class="lb-meta"><span class="lb-title">Lee Cronin's The Mummy</span><span class="lb-date">May 24, 2026</span></span>
-        </a>
-        <a class="lb-card" href="https://letterboxd.com/jaiminBabaria/film/apex-2026/" target="_blank" rel="noopener">
-          <span class="lb-poster"><span class="lb-pf"><span class="lb-pf-t">Apex</span><span class="lb-pf-y">2026</span></span></span>
-          <span class="lb-meta"><span class="lb-title">Apex</span><span class="lb-date">Apr 30, 2026</span></span>
-        </a>
-        <a class="lb-card" href="https://letterboxd.com/jaiminBabaria/film/bareilly-ki-barfi/" target="_blank" rel="noopener">
-          <span class="lb-poster"><span class="lb-pf"><span class="lb-pf-t">Bareilly Ki Barfi</span><span class="lb-pf-y">2017</span></span></span>
-          <span class="lb-meta"><span class="lb-title">Bareilly Ki Barfi</span><span class="lb-date">Apr 18, 2026</span></span>
-        </a>
+        <!-- Loading skeletons — replaced by JS once films.json loads -->
+        <div class="lb-card lb-skeleton"><span class="lb-poster"></span><span class="lb-meta"><span class="lb-title">&nbsp;</span><span class="lb-date">&nbsp;</span></span></div>
+        <div class="lb-card lb-skeleton"><span class="lb-poster"></span><span class="lb-meta"><span class="lb-title">&nbsp;</span><span class="lb-date">&nbsp;</span></span></div>
+        <div class="lb-card lb-skeleton"><span class="lb-poster"></span><span class="lb-meta"><span class="lb-title">&nbsp;</span><span class="lb-date">&nbsp;</span></span></div>
+        <div class="lb-card lb-skeleton"><span class="lb-poster"></span><span class="lb-meta"><span class="lb-title">&nbsp;</span><span class="lb-date">&nbsp;</span></span></div>
+        <div class="lb-card lb-skeleton"><span class="lb-poster"></span><span class="lb-meta"><span class="lb-title">&nbsp;</span><span class="lb-date">&nbsp;</span></span></div>
+        <div class="lb-card lb-skeleton"><span class="lb-poster"></span><span class="lb-meta"><span class="lb-title">&nbsp;</span><span class="lb-date">&nbsp;</span></span></div>
       </div>
     </div>
   </div>
@@ -1976,8 +1980,10 @@ window.addEventListener('load', () => {
       const st = data.stats || {};
       const totalEl = document.getElementById('lb-total');
       const yearEl  = document.getElementById('lb-year');
+      const introEl = document.getElementById('lb-intro-count');
       if (totalEl && st.total != null) totalEl.textContent = st.total.toLocaleString();
       if (yearEl  && st.this_year != null) yearEl.textContent = st.this_year.toLocaleString();
+      if (introEl && st.total != null) introEl.textContent = st.total.toLocaleString();
 
       // ── recent films ───────────────────────────────────────────────────────
       const films = (data.films || []).slice(0, MAX);
