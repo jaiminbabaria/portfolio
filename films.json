@@ -1,9 +1,9 @@
 {
-  "updated": "2026-07-03T08:46:52Z",
+  "updated": "2026-07-04T08:22:14Z",
   "username": "jaiminbabaria",
   "stats": {
     "total": 565,
-    "this_year": 51
+    "this_year": 52
   },
   "favorites": [
     {
@@ -11,11 +11,19 @@
       "year": "2004"
     },
     {
-      "title": "Rango",
-      "year": "2011"
+      "title": "The Big Lebowski",
+      "year": "1998"
     }
   ],
   "films": [
+    {
+      "title": "The Big Lebowski",
+      "year": "1998",
+      "rating": 5.0,
+      "date": "Jul 4, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/the-big-lebowski/",
+      "rewatch": true
+    },
     {
       "title": "Backrooms",
       "year": "2026",
@@ -102,14 +110,6 @@
       "rating": 5.0,
       "date": "Mar 30, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/12-angry-men/",
-      "rewatch": true
-    },
-    {
-      "title": "Sicario",
-      "year": "2015",
-      "rating": 5.0,
-      "date": "Mar 27, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/sicario-2015/",
       "rewatch": true
     }
   ]
