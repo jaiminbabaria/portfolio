@@ -1,9 +1,9 @@
 {
-  "updated": "2026-07-11T07:38:29Z",
+  "updated": "2026-07-12T07:57:11Z",
   "username": "jaiminbabaria",
   "stats": {
-    "total": 565,
-    "this_year": 52
+    "total": 566,
+    "this_year": 53
   },
   "favorites": [
     {
@@ -16,6 +16,14 @@
     }
   ],
   "films": [
+    {
+      "title": "Evil Dead Burn",
+      "year": "2026",
+      "rating": null,
+      "date": "Jul 11, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/evil-dead-burn/",
+      "rewatch": false
+    },
     {
       "title": "The Big Lebowski",
       "year": "1998",
@@ -102,14 +110,6 @@
       "rating": 5.0,
       "date": "Apr 3, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/no-smoking-2007/",
-      "rewatch": true
-    },
-    {
-      "title": "12 Angry Men",
-      "year": "1957",
-      "rating": 5.0,
-      "date": "Mar 30, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/12-angry-men/",
       "rewatch": true
     }
   ]
