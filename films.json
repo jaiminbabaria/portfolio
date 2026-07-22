@@ -1,9 +1,9 @@
 {
-  "updated": "2026-07-21T08:05:50Z",
+  "updated": "2026-07-22T08:06:36Z",
   "username": "jaiminbabaria",
   "stats": {
-    "total": 566,
-    "this_year": 53
+    "total": 567,
+    "this_year": 54
   },
   "favorites": [
     {
@@ -16,6 +16,14 @@
     }
   ],
   "films": [
+    {
+      "title": "The Odyssey",
+      "year": "2026",
+      "rating": 5.0,
+      "date": "Jul 21, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/the-odyssey-2026/",
+      "rewatch": false
+    },
     {
       "title": "Evil Dead Burn",
       "year": "2026",
@@ -103,14 +111,6 @@
       "date": "Apr 9, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/wild-things/",
       "rewatch": false
-    },
-    {
-      "title": "No Smoking",
-      "year": "2007",
-      "rating": 5.0,
-      "date": "Apr 3, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/no-smoking-2007/",
-      "rewatch": true
     }
   ]
 }
