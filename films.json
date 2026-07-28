@@ -1,9 +1,9 @@
 {
-  "updated": "2026-07-27T09:27:04Z",
+  "updated": "2026-07-28T08:12:44Z",
   "username": "jaiminbabaria",
   "stats": {
-    "total": 568,
-    "this_year": 55
+    "total": 569,
+    "this_year": 56
   },
   "favorites": [
     {
@@ -24,6 +24,14 @@
     }
   ],
   "films": [
+    {
+      "title": "The Sheep Detectives",
+      "year": "2026",
+      "rating": null,
+      "date": "Jul 27, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/the-sheep-detectives/",
+      "rewatch": false
+    },
     {
       "title": "Little Miss Sunshine",
       "year": "2006",
@@ -110,14 +118,6 @@
       "rating": null,
       "date": "Apr 15, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/tu-yaa-main/",
-      "rewatch": false
-    },
-    {
-      "title": "Thrash",
-      "year": "2026",
-      "rating": null,
-      "date": "Apr 11, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/thrash-2026/1/",
       "rewatch": false
     }
   ]
