@@ -1,9 +1,9 @@
 {
-  "updated": "2026-08-01T08:01:26Z",
+  "updated": "2026-08-02T08:03:01Z",
   "username": "jaiminbabaria",
   "stats": {
-    "total": 569,
-    "this_year": 56
+    "total": 570,
+    "this_year": 58
   },
   "favorites": [
     {
@@ -24,6 +24,22 @@
     }
   ],
   "films": [
+    {
+      "title": "Spider-Man: Brand New Day",
+      "year": "2026",
+      "rating": null,
+      "date": "Aug 1, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/spider-man-brand-new-day/",
+      "rewatch": false
+    },
+    {
+      "title": "Apocalypse Now",
+      "year": "1979",
+      "rating": 5.0,
+      "date": "Aug 1, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/apocalypse-now/",
+      "rewatch": true
+    },
     {
       "title": "The Sheep Detectives",
       "year": "2026",
@@ -102,22 +118,6 @@
       "rating": null,
       "date": "Apr 30, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/apex-2026/",
-      "rewatch": false
-    },
-    {
-      "title": "Bareilly Ki Barfi",
-      "year": "2017",
-      "rating": null,
-      "date": "Apr 18, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/bareilly-ki-barfi/",
-      "rewatch": false
-    },
-    {
-      "title": "Tu Yaa Main",
-      "year": "2026",
-      "rating": null,
-      "date": "Apr 15, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/tu-yaa-main/",
       "rewatch": false
     }
   ]
