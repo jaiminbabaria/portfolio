@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T06:36:12Z",
+  "updated": "2026-08-10T07:07:32Z",
   "username": "jaiminbabaria",
   "stats": {
     "total": 570,
@@ -24,6 +24,14 @@
     }
   ],
   "films": [
+    {
+      "title": "The Fantastic 4: First Steps",
+      "year": "2025",
+      "rating": null,
+      "date": "Aug 9, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/the-fantastic-4-first-steps/",
+      "rewatch": false
+    },
     {
       "title": "Spider-Man: Brand New Day",
       "year": "2026",
@@ -110,14 +118,6 @@
       "rating": null,
       "date": "May 24, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/lee-cronins-the-mummy/",
-      "rewatch": false
-    },
-    {
-      "title": "Apex",
-      "year": "2026",
-      "rating": null,
-      "date": "Apr 30, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/apex-2026/",
       "rewatch": false
     }
   ]
