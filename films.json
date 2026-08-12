@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-11T06:44:49Z",
+  "updated": "2026-08-12T07:05:44Z",
   "username": "jaiminbabaria",
   "stats": {
     "total": 570,
@@ -24,6 +24,14 @@
     }
   ],
   "films": [
+    {
+      "title": "Super Size Me",
+      "year": "2004",
+      "rating": null,
+      "date": "Aug 11, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/super-size-me/",
+      "rewatch": false
+    },
     {
       "title": "Placebo",
       "year": "2014",
@@ -110,14 +118,6 @@
       "rating": null,
       "date": "Jun 2, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/bee-movie/",
-      "rewatch": false
-    },
-    {
-      "title": "Obsession",
-      "year": "2025",
-      "rating": null,
-      "date": "May 27, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/obsession-2025/",
       "rewatch": false
     }
   ]
