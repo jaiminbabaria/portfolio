@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-12T07:05:44Z",
+  "updated": "2026-08-13T07:09:28Z",
   "username": "jaiminbabaria",
   "stats": {
     "total": 570,
@@ -24,6 +24,14 @@
     }
   ],
   "films": [
+    {
+      "title": "The Invite",
+      "year": "2026",
+      "rating": null,
+      "date": "Aug 12, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/the-invite-2026/",
+      "rewatch": false
+    },
     {
       "title": "Super Size Me",
       "year": "2004",
@@ -110,14 +118,6 @@
       "rating": null,
       "date": "Jun 3, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/backrooms-2026/",
-      "rewatch": false
-    },
-    {
-      "title": "Bee Movie",
-      "year": "2007",
-      "rating": null,
-      "date": "Jun 2, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/bee-movie/",
       "rewatch": false
     }
   ]
