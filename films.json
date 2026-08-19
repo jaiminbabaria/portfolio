@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-18T06:23:17Z",
+  "updated": "2026-08-19T06:24:09Z",
   "username": "jaiminbabaria",
   "stats": {
     "total": 570,
@@ -24,6 +24,14 @@
     }
   ],
   "films": [
+    {
+      "title": "Battle Royale",
+      "year": "2000",
+      "rating": null,
+      "date": "Aug 18, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/battle-royale/",
+      "rewatch": false
+    },
     {
       "title": "The Invite",
       "year": "2026",
@@ -111,14 +119,6 @@
       "date": "Jul 4, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/the-big-lebowski/",
       "rewatch": true
-    },
-    {
-      "title": "Backrooms",
-      "year": "2026",
-      "rating": null,
-      "date": "Jun 3, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/backrooms-2026/",
-      "rewatch": false
     }
   ]
 }
