@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-29T11:54:55Z",
+  "updated": "2026-08-30T10:52:04Z",
   "username": "jaiminbabaria",
   "stats": {
     "total": 570,
@@ -24,6 +24,14 @@
     }
   ],
   "films": [
+    {
+      "title": "Last Film Show",
+      "year": "2021",
+      "rating": 5.0,
+      "date": "Aug 29, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/last-film-show/",
+      "rewatch": true
+    },
     {
       "title": "The Drama",
       "year": "2026",
@@ -110,14 +118,6 @@
       "rating": 5.0,
       "date": "Jul 21, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/the-odyssey-2026/",
-      "rewatch": false
-    },
-    {
-      "title": "Evil Dead Burn",
-      "year": "2026",
-      "rating": null,
-      "date": "Jul 11, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/evil-dead-burn/",
       "rewatch": false
     }
   ]
