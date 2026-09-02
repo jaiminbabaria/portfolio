@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-01T10:42:22Z",
+  "updated": "2026-09-02T10:07:30Z",
   "username": "jaiminbabaria",
   "stats": {
     "total": 570,
@@ -24,6 +24,14 @@
     }
   ],
   "films": [
+    {
+      "title": "Fight Back to School",
+      "year": "1991",
+      "rating": null,
+      "date": "Sep 1, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/fight-back-to-school/",
+      "rewatch": false
+    },
     {
       "title": "Last Film Show",
       "year": "2021",
@@ -110,14 +118,6 @@
       "rating": null,
       "date": "Jul 22, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/little-miss-sunshine/",
-      "rewatch": false
-    },
-    {
-      "title": "The Odyssey",
-      "year": "2026",
-      "rating": 5.0,
-      "date": "Jul 21, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/the-odyssey-2026/",
       "rewatch": false
     }
   ]
