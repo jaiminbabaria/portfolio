@@ -1,9 +1,9 @@
 {
-  "updated": "2026-09-12T09:43:58Z",
+  "updated": "2026-09-13T10:45:24Z",
   "username": "jaiminbabaria",
   "stats": {
-    "total": 580,
-    "this_year": 66
+    "total": 581,
+    "this_year": 67
   },
   "favorites": [
     {
@@ -16,6 +16,14 @@
     }
   ],
   "films": [
+    {
+      "title": "Another Round",
+      "year": "2020",
+      "rating": null,
+      "date": "Sep 13, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/another-round/",
+      "rewatch": false
+    },
     {
       "title": "Fight Back to School",
       "year": "1991",
@@ -102,14 +110,6 @@
       "rating": null,
       "date": "Jul 27, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/the-sheep-detectives/",
-      "rewatch": false
-    },
-    {
-      "title": "Little Miss Sunshine",
-      "year": "2006",
-      "rating": null,
-      "date": "Jul 22, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/little-miss-sunshine/",
       "rewatch": false
     }
   ]
