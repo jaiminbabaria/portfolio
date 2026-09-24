@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-23T10:25:17Z",
+  "updated": "2026-09-24T10:41:53Z",
   "username": "jaiminbabaria",
   "stats": {
     "total": 581,
@@ -16,6 +16,14 @@
     }
   ],
   "films": [
+    {
+      "title": "Teenage Sex and Death at Camp Miasma",
+      "year": "2026",
+      "rating": null,
+      "date": "Sep 23, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/teenage-sex-and-death-at-camp-miasma/",
+      "rewatch": false
+    },
     {
       "title": "Tony",
       "year": "2026",
@@ -103,14 +111,6 @@
       "date": "Aug 1, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/spider-man-brand-new-day/",
       "rewatch": false
-    },
-    {
-      "title": "Apocalypse Now",
-      "year": "1979",
-      "rating": 5.0,
-      "date": "Aug 1, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/apocalypse-now/",
-      "rewatch": true
     }
   ]
 }
