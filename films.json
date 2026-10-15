@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-14T10:47:59Z",
+  "updated": "2026-10-15T10:30:38Z",
   "username": "jaiminbabaria",
   "stats": {
     "total": 581,
@@ -16,6 +16,14 @@
     }
   ],
   "films": [
+    {
+      "title": "Digger",
+      "year": "2026",
+      "rating": 5.0,
+      "date": "Oct 14, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/digger-2026/",
+      "rewatch": false
+    },
     {
       "title": "Zindagi Na Milegi Dobara",
       "year": "2011",
@@ -102,14 +110,6 @@
       "rating": 5.0,
       "date": "Aug 10, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/placebo-2014/",
-      "rewatch": false
-    },
-    {
-      "title": "The Fantastic 4: First Steps",
-      "year": "2025",
-      "rating": null,
-      "date": "Aug 9, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/the-fantastic-4-first-steps/",
       "rewatch": false
     }
   ]
