@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15T10:30:38Z",
+  "updated": "2026-10-16T10:17:51Z",
   "username": "jaiminbabaria",
   "stats": {
     "total": 581,
@@ -16,6 +16,14 @@
     }
   ],
   "films": [
+    {
+      "title": "Hope",
+      "year": "2026",
+      "rating": null,
+      "date": "Oct 15, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/hope-2026/",
+      "rewatch": false
+    },
     {
       "title": "Digger",
       "year": "2026",
@@ -102,14 +110,6 @@
       "rating": null,
       "date": "Aug 11, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/super-size-me/",
-      "rewatch": false
-    },
-    {
-      "title": "Placebo",
-      "year": "2014",
-      "rating": 5.0,
-      "date": "Aug 10, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/placebo-2014/",
       "rewatch": false
     }
   ]
