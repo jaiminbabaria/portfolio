@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22T10:47:52Z",
+  "updated": "2026-10-23T10:40:03Z",
   "username": "jaiminbabaria",
   "stats": {
     "total": 581,
@@ -16,6 +16,14 @@
     }
   ],
   "films": [
+    {
+      "title": "You Can See Everything",
+      "year": "2026",
+      "rating": null,
+      "date": "Oct 23, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/you-can-see-everything/",
+      "rewatch": false
+    },
     {
       "title": "Hope",
       "year": "2026",
@@ -102,14 +110,6 @@
       "rating": null,
       "date": "Aug 12, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/the-invite-2026/",
-      "rewatch": false
-    },
-    {
-      "title": "Super Size Me",
-      "year": "2004",
-      "rating": null,
-      "date": "Aug 11, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/super-size-me/",
       "rewatch": false
     }
   ]
