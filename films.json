@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-28T11:47:26Z",
+  "updated": "2026-10-29T11:55:44Z",
   "username": "jaiminbabaria",
   "stats": {
     "total": 581,
@@ -16,6 +16,14 @@
     }
   ],
   "films": [
+    {
+      "title": "One Battle After Another",
+      "year": "2025",
+      "rating": 5.0,
+      "date": "Oct 29, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/one-battle-after-another/1/",
+      "rewatch": true
+    },
     {
       "title": "You Can See Everything",
       "year": "2026",
@@ -102,14 +110,6 @@
       "rating": null,
       "date": "Aug 18, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/battle-royale/",
-      "rewatch": false
-    },
-    {
-      "title": "The Invite",
-      "year": "2026",
-      "rating": null,
-      "date": "Aug 12, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/the-invite-2026/",
       "rewatch": false
     }
   ]
