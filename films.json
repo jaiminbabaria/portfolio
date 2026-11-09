@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08T12:23:01Z",
+  "updated": "2026-11-09T14:37:18Z",
   "username": "jaiminbabaria",
   "stats": {
     "total": 581,
@@ -16,6 +16,14 @@
     }
   ],
   "films": [
+    {
+      "title": "Resident Evil",
+      "year": "2026",
+      "rating": null,
+      "date": "Nov 7, 2026",
+      "url": "https://letterboxd.com/jaiminbabaria/film/resident-evil-2026/",
+      "rewatch": false
+    },
     {
       "title": "One Battle After Another",
       "year": "2025",
@@ -102,14 +110,6 @@
       "rating": null,
       "date": "Aug 27, 2026",
       "url": "https://letterboxd.com/jaiminbabaria/film/the-drama/",
-      "rewatch": false
-    },
-    {
-      "title": "Battle Royale",
-      "year": "2000",
-      "rating": null,
-      "date": "Aug 18, 2026",
-      "url": "https://letterboxd.com/jaiminbabaria/film/battle-royale/",
       "rewatch": false
     }
   ]
